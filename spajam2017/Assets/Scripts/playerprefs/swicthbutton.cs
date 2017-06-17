@@ -21,7 +21,7 @@ public class swicthbutton : MonoBehaviour {
 	public void OnClick(){
 		string name = PlayerPrefs.GetString( "name");
 		if (name == "") {
-			SceneManager.LoadScene("playerprefs");
+			SceneManager.LoadScene("Profile");
 		} else {
 			SceneManager.LoadScene("NextScene");
 		}
