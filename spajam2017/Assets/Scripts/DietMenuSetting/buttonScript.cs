@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class buttonScript : MonoBehaviour {
+public class ButtonScript : MonoBehaviour {
 	GameObject _slideObj;
 	SlideTest _slideTest;
 	public string panelName;
