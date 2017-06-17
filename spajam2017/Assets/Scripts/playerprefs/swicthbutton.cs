@@ -15,14 +15,13 @@ public class swicthbutton : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		GetComponent<Button> ().onClick.AddListener (OnClick);
 
 	}
 
-	void OnClick(){
+	public void OnClick(){
 		string name = PlayerPrefs.GetString( "name");
 		if (name == "") {
-			SceneManager.LoadScene("playerprefs");
+			SceneManager.LoadScene("Profile");
 		} else {
 			SceneManager.LoadScene("NextScene");
 		}

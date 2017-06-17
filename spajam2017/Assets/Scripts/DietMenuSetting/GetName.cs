@@ -11,13 +11,14 @@ public class GetName : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		myText = GetComponentInChildren<Text> ();
-		SetNameText ("カレー","トライアスロン行ってこい");
+		//SetNameText ("カレー","トライアスロン行ってこい");
 		NameText();
 	}
 
 	public void SetNameText(string food, string menu){
 		foodName = food;
 		menuName = menu;
+		NameText();
 	}
 
 	public void NameText(){
