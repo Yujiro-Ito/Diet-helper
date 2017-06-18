@@ -23,7 +23,7 @@ public class swicthbutton : MonoBehaviour {
 		if (name == "") {
 			SceneManager.LoadScene("Profile");
 		} else {
-			SceneManager.LoadScene("NextScene");
+			SceneManager.LoadScene("DietMenuSetting");
 		}
 	}
 }

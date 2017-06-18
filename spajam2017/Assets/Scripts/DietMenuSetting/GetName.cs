@@ -5,29 +5,21 @@ using UnityEngine.UI;
 
 public class GetName : MonoBehaviour {
 
-	Text myText;
+	public Text foodText;
+	public Text calText;
 	string foodName;
 	string menuName;
 	// Use this for initialization
-	void Start () {
-		myText = GetComponentInChildren<Text> ();
-		//SetNameText ("カレー","トライアスロン行ってこい");
-		NameText();
-	}
 
-	public void SetNameText(string food, string menu){
+	public void SetNameText(string food, int cal){
 		foodName = food;
-		menuName = menu;
+		menuName = cal + "kcal";
 		NameText();
 	}
 
 	public void NameText(){
-		if (gameObject.name == "FoodName") {
-			myText.text = foodName;
-		}
-		if (gameObject.name == "MenuName") {
-			myText.text = menuName;
-		}
+		foodText.text = foodName;
+		calText.text = menuName;
 	}
 
 	// Update is called once per frame
