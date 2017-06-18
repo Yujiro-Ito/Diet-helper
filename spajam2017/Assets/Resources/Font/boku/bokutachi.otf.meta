@@ -1,0 +1,21 @@
+fileFormatVersion: 2
+guid: 3b1ee2d9ba89b4b169227d26730dd381
+timeCreated: 1497759337
+licenseType: Free
+TrueTypeFontImporter:
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: BokutachinoGothic
+  fontNames:
+  - BokutachinoGothic
+  fallbackFontReferences: []
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
