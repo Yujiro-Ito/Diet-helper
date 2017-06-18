@@ -20,6 +20,9 @@ public class SaveData {
 			}
 		}
 
+		//nullなら新しく作っちゃえ
+		if(result == null) result = new Data();
+
 		return result;
 	}
 
@@ -42,16 +45,26 @@ public class SaveData {
 	public void Delete(SaveNode node){
 		Data saveData = GetSaveData();
 		//削除
-		if(saveData.saveNode.Remove(node))Debug.Log("データの削除が完了しました。");
-		else Debug.Log("データの削除ができませんでした。");
-		//セーブ
-		Save(saveData);
+		if(saveData.saveNode.Count != 0){
+			int count = 0;
+			foreach(SaveNode data in  saveData.saveNode){
+				if(data.foodName == node.foodName && data.menu == node.menu){
+					saveData.saveNode.RemoveAt(count);
+					Debug.Log("データを削除しました。");
+					//セーブ
+					Save(saveData);
+					return;
+				}
+				count++;
+			}
+		}
+		Debug.Log("データの削除ができませんでした。");
 	}
 }
 
 [System.SerializableAttribute]
 public class Data{
-	public List<SaveNode> saveNode;
+	public List<SaveNode> saveNode = new List<SaveNode>();
 }
 
 [System.SerializableAttribute]
