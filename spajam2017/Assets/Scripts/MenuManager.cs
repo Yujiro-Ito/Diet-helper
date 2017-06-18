@@ -34,6 +34,13 @@ public class MenuManager : MonoBehaviour {
 		return _singleton;
 	}
 
+	[RuntimeInitializeOnLoadMethodAttribute]
+	static void InstanceAd(){
+		//ad
+		GameObject tmp = (GameObject)Instantiate(Resources.Load("Prefabs/AdCanvas"), Vector3.zero, Quaternion.identity);
+		DontDestroyOnLoad(tmp);
+	}
+
 	// Use this for initialization
 	/// <summary>
 	/// Callback sent to all game objects before the application is quit.

@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class Ad : MonoBehaviour {
 	public Sprite[] adImages; 
 	public Image image;
-	public int count;
+	private int count;
 
 	// Use this for initialization
 	void Start () {
