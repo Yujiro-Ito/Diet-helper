@@ -21,7 +21,11 @@ public class swicthbutton : MonoBehaviour {
 
 	void OnClick(){
 		string name = PlayerPrefs.GetString( "name");
-		if (name == "") {
+		string toll = PlayerPrefs.GetString( "toll");
+		string weight = PlayerPrefs.GetString( "weight");
+		string old = PlayerPrefs.GetString( "old");
+		string neta2 = PlayerPrefs.GetString( "neta2");
+		if (name == "" || toll == "" || weight == "" || old == "" || neta2 == "" ) {
 			SceneManager.LoadScene("Profile");
 		} else {
 			SceneManager.LoadScene("NextScene");
