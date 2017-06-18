@@ -5,9 +5,9 @@ using System.IO;
 using System.Linq;
 
 public class SaveData {
-	public Data GetSaveData(){
+	public SaveNodeContainer GetSaveData(){
 		string filePath = Application.dataPath + "/savedata.json";
-		Data result;
+		SaveNodeContainer result;
 		//ファイル検索
 		if(!File.Exists(filePath)){
 			Debug.LogError("Fileが見つかりません");
@@ -16,17 +16,17 @@ public class SaveData {
 		//ファイルから読み込む
 		using(FileStream st = new FileStream(filePath, FileMode.Open)){
 			using(StreamReader sr = new StreamReader(st)){
-				result = JsonUtility.FromJson<Data>(sr.ReadToEnd());
+				result = JsonUtility.FromJson<SaveNodeContainer>(sr.ReadToEnd());
 			}
 		}
 
 		//nullなら新しく作っちゃえ
-		if(result == null) result = new Data();
+		if(result == null) result = new SaveNodeContainer();
 
 		return result;
 	}
 
-	private void Save(Data data){
+	private void Save(SaveNodeContainer data){
 		string filePath = Application.dataPath + "/savedata.json";
 		//データを移す
 		using(FileStream st = new FileStream(filePath, FileMode.Create, FileAccess.Write)){
@@ -37,13 +37,13 @@ public class SaveData {
 	}
 
 	public void Add(SaveNode node){
-		Data saveData = GetSaveData();
+		SaveNodeContainer saveData = GetSaveData();
 		saveData.saveNode.Add(node);
 		Save(saveData);
 	}
 
 	public void Delete(SaveNode node){
-		Data saveData = GetSaveData();
+		SaveNodeContainer saveData = GetSaveData();
 		//削除
 		if(saveData.saveNode.Count != 0){
 			int count = 0;
@@ -63,7 +63,7 @@ public class SaveData {
 }
 
 [System.SerializableAttribute]
-public class Data{
+public class SaveNodeContainer{
 	public List<SaveNode> saveNode = new List<SaveNode>();
 }
 

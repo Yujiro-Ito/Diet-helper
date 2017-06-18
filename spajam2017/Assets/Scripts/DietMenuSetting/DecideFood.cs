@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class DecideFood : MonoBehaviour {
 	public GetName getName;
+	public MenuData menuData;
 	private Node _currentChoose;
 	private Image _currentNodeBackground;
 	public ButtonScript buttonScript;
@@ -19,14 +20,19 @@ public class DecideFood : MonoBehaviour {
 
 	public void Push(){
 		if(_currentChoose != null){
-			getName.SetFoodText(_currentChoose.FoodName, _currentChoose.Calorie.ToString() + "kcal");
+			getName.SetFoodText(_currentChoose.FoodName, _currentChoose.Calorie);
+			menuData.SetFoodText(_currentChoose.FoodName, _currentChoose.Calorie);
 			buttonScript.ButtonPush();
 		}
 	}
 
 	public void AssignData(Image newBack, Node newNode){
-		_currentChoose = newNode;
-		if(_currentNodeBackground != null)_currentNodeBackground.color = Color.white;
+		if(_currentNodeBackground != null){
+			if(_currentChoose == null || _currentChoose.FoodName != newNode.FoodName){
+				_currentChoose = newNode;
+				_currentNodeBackground.color = Color.white;
+			}
+		}
 		_currentNodeBackground = newBack;
 	}
 }

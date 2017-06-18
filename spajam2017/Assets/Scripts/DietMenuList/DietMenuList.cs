@@ -10,7 +10,7 @@ public class DietMenuList : MonoBehaviour {
 	void Start () {
 		_dietMenuNodePrefab = Resources.Load("Prefabs/DietMenuNode") as GameObject;
 		//必用分だけインスタンス
-		Data saveData = MenuManager.Instance().Save.GetSaveData();
+		SaveNodeContainer saveData = MenuManager.Instance().Save.GetSaveData();
 		if(saveData.saveNode.Count != 0){
 			foreach(SaveNode node in saveData.saveNode){
 				GameObject ins = (GameObject)Instantiate(_dietMenuNodePrefab, Vector3.zero, Quaternion.identity);

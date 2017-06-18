@@ -16,9 +16,7 @@ public class MenuData : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		myText = GetComponentInChildren<Text> ();
-
-		SetFoodText ("カレー", 300);
+		myText = GetComponent<Text> ();
 	}
 
 	public void SetFoodText(string food, int cal){
@@ -30,7 +28,13 @@ public class MenuData : MonoBehaviour {
 	public void CalCalucalation(){
 		int random = Random.Range (0,datas.Length);
 		CalResult =  foodCal / datas[random].cal;
-		myText.text = datas[random].menuName +"を"+ CalResult + datas[random].unit;
+		myText.text = datas[random].menuName +"を\n"+ CalResult + datas[random].unit;
+		//セーブデータ作成
+		SaveNode node = new SaveNode();
+		node.foodName = foodName;
+		node.cal = (int)foodCal;
+		node.menu = datas[random].menuName +"を"+ CalResult + datas[random].unit;
+		MenuManager.Instance().Save.Add(node);
 	}
 
 	// Update is called once per frame
