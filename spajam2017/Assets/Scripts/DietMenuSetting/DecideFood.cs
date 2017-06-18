@@ -27,11 +27,13 @@ public class DecideFood : MonoBehaviour {
 	}
 
 	public void AssignData(Image newBack, Node newNode){
-		if(_currentNodeBackground != null){
-			if(_currentChoose == null || _currentChoose.FoodName != newNode.FoodName){
+		if(_currentNodeBackground != null && _currentChoose != null){
+			if( _currentChoose.FoodName != newNode.FoodName){
 				_currentChoose = newNode;
 				_currentNodeBackground.color = Color.white;
 			}
+		} else {
+			_currentChoose = newNode;
 		}
 		_currentNodeBackground = newBack;
 	}
