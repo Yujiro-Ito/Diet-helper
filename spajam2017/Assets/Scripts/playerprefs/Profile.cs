@@ -14,7 +14,6 @@ public class Profile : MonoBehaviour {
 	public Text tollfield;
 	public Text	weightfield;
 	public Text oldfield;
-	public Text neta2field;
 
 	public Toggle man;
 	public Toggle women;
@@ -26,7 +25,6 @@ public class Profile : MonoBehaviour {
 		PlayerPrefs.SetString( "toll", tollfield.text );
 		PlayerPrefs.SetString( "weight", weightfield.text );
 		PlayerPrefs.SetString( "old", oldfield.text );
-		PlayerPrefs.SetString( "neta2", neta2field.text );
 	}
 
 	public void GetCheck(){
@@ -35,11 +33,10 @@ public class Profile : MonoBehaviour {
 		string toll = PlayerPrefs.GetString ("toll");
 		string weight = PlayerPrefs.GetString ("weight");
 		string old = PlayerPrefs.GetString ("old");
-		string neta2 = PlayerPrefs.GetString ("neta2");
 
 		if (man.isOn == true || women.isOn == true || other.isOn == true) {
-			if (name != "" && toll != "" && weight != "" && old != "" && neta2 != "") {
-				SceneManager.LoadScene ("Title");
+			if (name != "" && toll != "" && weight != "" && old != "") {
+				SceneManager.LoadScene ("DietMenuSetting");
 			}
 		}
 	}
