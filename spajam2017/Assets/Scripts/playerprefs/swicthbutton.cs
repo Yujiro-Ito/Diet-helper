@@ -23,8 +23,7 @@ public class swicthbutton : MonoBehaviour {
 		string toll = PlayerPrefs.GetString( "toll");
 		string weight = PlayerPrefs.GetString( "weight");
 		string old = PlayerPrefs.GetString( "old");
-		string neta2 = PlayerPrefs.GetString( "neta2");
-		if (name == "" || toll == "" || weight == "" || old == "" || neta2 == "" ) {
+		if (name == "" || toll == "" || weight == "" || old == "") {
 			SceneManager.LoadScene("Profile");
 		} else {
 			SceneManager.LoadScene("DietMenuSetting");
