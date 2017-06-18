@@ -5,25 +5,25 @@ using UnityEngine.UI;
 
 public class GetName : MonoBehaviour {
 
-	Text myText;
-	string foodName;
-	string menuName;
+	public Text myText;
+	public string foodName;
+	public string menuName;
+	public string foodCal;
 	// Use this for initialization
 	void Start () {
 		myText = GetComponentInChildren<Text> ();
-		//SetNameText ("カレー","トライアスロン行ってこい");
-		NameText();
+		//SetFoodText ("カレー",500);
 	}
 
-	public void SetNameText(string food, string menu){
+	public void SetFoodText(string food, string cal){
 		foodName = food;
-		menuName = menu;
+		foodCal = cal;
 		NameText();
 	}
 
 	public void NameText(){
 		if (gameObject.name == "FoodName") {
-			myText.text = foodName;
+			myText.text = foodName + foodCal;
 		}
 		if (gameObject.name == "MenuName") {
 			myText.text = menuName;

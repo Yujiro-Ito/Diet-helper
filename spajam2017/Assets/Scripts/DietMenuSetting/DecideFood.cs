@@ -19,7 +19,7 @@ public class DecideFood : MonoBehaviour {
 
 	public void Push(){
 		if(_currentChoose != null){
-			getName.SetNameText(_currentChoose.FoodName, _currentChoose.Calorie.ToString() + "kcal");
+			getName.SetFoodText(_currentChoose.FoodName, _currentChoose.Calorie.ToString() + "kcal");
 			buttonScript.ButtonPush();
 		}
 	}
