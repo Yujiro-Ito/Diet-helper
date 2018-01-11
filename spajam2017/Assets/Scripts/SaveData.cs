@@ -6,18 +6,23 @@ using System.Linq;
 
 public class SaveData {
 	public SaveNodeContainer GetSaveData(){
-		string filePath = Application.dataPath + "/savedata.json";
+		string filePath;
+#if UNITY_EDITOR
+		filePath = Application.streamingAssetsPath + "/savedata.json";
+#elif UNITY_ANDROID
+		filePath = Application.persistentDataPath + "/savedata.json";
+#endif
+		FileInfo info = new FileInfo(filePath);
+		Debug.Log(filePath);
 		SaveNodeContainer result;
 		//ファイル検索
-		if(!File.Exists(filePath)){
+		if(!info.Exists){
 			Debug.LogError("Fileが見つかりません");
 			return null;
 		}
 		//ファイルから読み込む
-		using(FileStream st = new FileStream(filePath, FileMode.Open)){
-			using(StreamReader sr = new StreamReader(st)){
-				result = JsonUtility.FromJson<SaveNodeContainer>(sr.ReadToEnd());
-			}
+		using(StreamReader sr = info.OpenText()){
+			result = JsonUtility.FromJson<SaveNodeContainer>(sr.ReadToEnd());
 		}
 
 		//nullなら新しく作っちゃえ
@@ -27,12 +32,17 @@ public class SaveData {
 	}
 
 	private void Save(SaveNodeContainer data){
-		string filePath = Application.dataPath + "/savedata.json";
+		string filePath;
+#if UNITY_EDITOR
+		filePath = Application.streamingAssetsPath + "/savedata.json";
+#elif UNITY_ANDROID
+		filePath = Application.persistentDataPath + "/savedata.json";
+#endif
+		FileInfo info = new FileInfo(filePath);
+		
 		//データを移す
-		using(FileStream st = new FileStream(filePath, FileMode.Create, FileAccess.Write)){
-			using(StreamWriter sw = new StreamWriter(st)){
-				sw.WriteLine(JsonUtility.ToJson(data));
-			}
+		using(StreamWriter sw = info.CreateText()){
+			sw.WriteLine(JsonUtility.ToJson(data));
 		}
 	}
 
